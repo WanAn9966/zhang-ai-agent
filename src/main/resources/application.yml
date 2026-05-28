@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: yu-ai-agent
+  profiles:
+    active: local
+  ai:
+    dashscope:
+      api-key: ${spring.ai.dashscope.api-key}
+  output:
+    ansi:
+      enabled: never
+    mcp:
+      client:
+        stdio:
+          servers-configuration: classpath:mcp-servers.json
+
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+
+
+  ai:
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        dimensions: 1536
+        distance-type: COSINE_DISTANCE
+        max-document-batch-size: 10000
+# springdoc-openapi configuration
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.yupi.yuaiagent.controller
+
+# knife4j configuration
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+search-api:
+  api-key: ${search-api.api-key}
