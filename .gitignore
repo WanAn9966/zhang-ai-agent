@@ -36,3 +36,16 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### AL ###
+# Template for AL projects for Dynamics 365 Business Central.
+.alcache/
+.alpackages/
+.snapshots/
+.output/
+*.app
+rad.json
+*.g.xlf
+*.bclicense
+*.flf
+TestResults.xml
